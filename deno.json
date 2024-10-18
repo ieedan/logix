@@ -1,4 +1,5 @@
 {
+	"name": "@logix/monorepo",
 	"tasks": {
 		"dev": "deno run --watch main.ts"
 	},
