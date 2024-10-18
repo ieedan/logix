@@ -1,5 +1,6 @@
 {
 	"name": "@logix/utils",
+	"version": "0.1.0",
 	"tasks": {},
 	"exports": "./src/index.ts"
 }
