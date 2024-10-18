@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import * as s from "../src/scanner/index.ts";
+import * as s from "../src/scanner.ts";
 
 const scanner = s.new();
 

@@ -1,6 +1,6 @@
 {
 	"$schema": "https://unpkg.com/ts-blocks@0.6.0/schema.json",
-	"path": "src/blocks",
+	"path": "src",
 	"addByCategory": false,
 	"includeIndexFile": true,
 	"includeTests": false

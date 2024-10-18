@@ -4,8 +4,8 @@ import {
 	isAlphaNumeric,
 	isNumber,
 	isValidForTagBody,
-} from "../utils/index.ts";
-import { Err, Ok, type Result } from "../blocks/index.ts";
+} from "./utils.ts";
+import { Err, Ok, type Result } from "@logix/utils";
 
 type Error = {
 	error: string;

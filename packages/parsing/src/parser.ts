@@ -1,7 +1,7 @@
-import { Err, Ok, type Result } from "../blocks/result.ts";
-import { EXPRESSION_KEYWORDS, type Token } from "../scanner/tokens.ts";
-import type { And, Branch, Rung } from "./tree.ts";
-import type { Expression } from "../expressions/index.ts";
+import { Err, Ok, type Result } from "@logix/utils";
+import { EXPRESSION_KEYWORDS, type Token } from "./tokens.ts";
+import type { And, Branch, Rung } from "./logic.ts";
+import type { Expression } from "./expressions.ts";
 
 type Parser = {
 	parse: (tokens: Token[]) => Rung[];

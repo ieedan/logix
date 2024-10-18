@@ -1,4 +1,4 @@
-import type { Expression } from "../expressions/index.ts";
+import type { Expression } from "./expressions.ts";
 
 export type Rung = {
 	logic: And;

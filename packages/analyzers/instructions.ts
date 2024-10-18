@@ -3,16 +3,15 @@
    currently it just implements a few basic features to test the usefulness of the produced AST
 */
 
-import { arrayToMap } from "../blocks/index.ts";
-import type { Expression } from "../expressions/index.ts";
-import type { Branch, Instruction, Rung } from "../parser/tree.ts";
+import { arrayToMap } from "@logix/utils";
+import type { expressions, logic } from "@logix/parsing";
 import color from "chalk";
 
 export type Observation = {
 	level: "error" | "warn" | "info";
 	message: string;
 	rung: number;
-	instruction?: Instruction;
+	instruction?: logic.Instruction;
 	parameter?: number;
 };
 
@@ -52,11 +51,7 @@ export type Parameter = {
 	 * @param name Name of the parameter
 	 * @returns
 	 */
-	accept: (
-		expr: Expression,
-		index: number,
-		name: string | undefined,
-	) => string | undefined;
+	accept: (expr: expressions.Expression, index: number, name: string | undefined) => string | undefined;
 };
 
 export type LogixInstruction = {
@@ -67,52 +62,28 @@ export type LogixInstruction = {
 };
 
 export const acceptTag: Parameter["accept"] = (expr, index, name = undefined) =>
-	expr.typ === "Tag"
+	expr.typ === "Tag" ? undefined : `${name ?? `Operand ${index}`} only accepts Tags`;
+
+export const acceptExpression: Parameter["accept"] = (expr, index, name = undefined) =>
+	expr.typ !== "String" ? undefined : `${name ?? `Operand ${index}`} only accepts Expressions`;
+
+export const acceptNumber: Parameter["accept"] = (expr, index, name = undefined) =>
+	expr.typ === "Number" ? undefined : `${name ?? `Operand ${index}`} only accepts Numbers`;
+
+export const acceptNumberOrTag: Parameter["accept"] = (expr, index, name = undefined) =>
+	expr.typ === "Number" || expr.typ === "Tag"
 		? undefined
-		: `${name ?? `Operand ${index}`} only accepts Tags`;
+		: `${name ?? `Operand ${index}`} only accepts Numbers and Tags`;
 
-export const acceptExpression: Parameter["accept"] = (
-	expr,
-	index,
-	name = undefined,
-) => expr.typ !== "String"
-	? undefined
-	: `${name ?? `Operand ${index}`} only accepts Expressions`;
+export const acceptStringOrTag: Parameter["accept"] = (expr, index, name = undefined) =>
+	expr.typ === "String" || expr.typ === "Tag"
+		? undefined
+		: `${name ?? `Operand ${index}`} only accepts Strings and Tags`;
 
-export const acceptNumber: Parameter["accept"] = (
-	expr,
-	index,
-	name = undefined,
-) => expr.typ === "Number"
-	? undefined
-	: `${name ?? `Operand ${index}`} only accepts Numbers`;
-
-export const acceptNumberOrTag: Parameter["accept"] = (
-	expr,
-	index,
-	name = undefined,
-) => expr.typ === "Number" || expr.typ === "Tag"
-	? undefined
-	: `${name ?? `Operand ${index}`} only accepts Numbers and Tags`;
-
-export const acceptStringOrTag: Parameter["accept"] = (
-	expr,
-	index,
-	name = undefined,
-) => expr.typ === "String" || expr.typ === "Tag"
-	? undefined
-	: `${name ?? `Operand ${index}`} only accepts Strings and Tags`;
-
-export const acceptComparable: Parameter["accept"] = (
-	expr,
-	index,
-	name = undefined,
-) => {
+export const acceptComparable: Parameter["accept"] = (expr, index, name = undefined) => {
 	const ok = ["Number", "String", "Tag"].includes(expr.typ);
 
-	return ok
-		? undefined
-		: `${name ?? `Operand ${index}`} accepts Numbers, Strings, Tags`;
+	return ok ? undefined : `${name ?? `Operand ${index}`} accepts Numbers, Strings, Tags`;
 };
 
 export const DEFAULT_INSTRUCTIONS: Map<string, LogixInstruction> = arrayToMap(
@@ -483,18 +454,14 @@ export const DEFAULT_INSTRUCTIONS: Map<string, LogixInstruction> = arrayToMap(
 					accept: (expr, index, name) =>
 						expr.typ === "Undefined" || expr.typ == "Number"
 							? undefined
-							: `${
-								name ?? `Operand ${index}`
-							} only accepts numbers.`,
+							: `${name ?? `Operand ${index}`} only accepts numbers.`,
 				},
 				{
 					name: "Position",
 					accept: (expr, index, name) =>
 						expr.typ === "Undefined" || expr.typ == "Number"
 							? undefined
-							: `${
-								name ?? `Operand ${index}`
-							} only accepts numbers.`,
+							: `${name ?? `Operand ${index}`} only accepts numbers.`,
 				},
 				{
 					name: "Mode",
@@ -506,17 +473,17 @@ export const DEFAULT_INSTRUCTIONS: Map<string, LogixInstruction> = arrayToMap(
 			],
 		},
 	] satisfies LogixInstruction[],
-	(instruction) => [instruction.name, instruction],
+	(instruction) => [instruction.name, instruction]
 );
 
-const analyze = (rungs: Rung[]): Observation[] | null => {
+const analyze = (rungs: logic.Rung[]): Observation[] | null => {
 	let observations: Observation[] | null = null;
 	let rungIndex = 0;
 
 	const _error = (
 		message: string,
-		instruction: Instruction | undefined = undefined,
-		parameter: number | undefined = undefined,
+		instruction: logic.Instruction | undefined = undefined,
+		parameter: number | undefined = undefined
 	) => {
 		if (observations == null) {
 			observations = [];
@@ -533,8 +500,8 @@ const analyze = (rungs: Rung[]): Observation[] | null => {
 
 	const _warn = (
 		message: string,
-		instruction: Instruction | undefined = undefined,
-		parameter: number | undefined = undefined,
+		instruction: logic.Instruction | undefined = undefined,
+		parameter: number | undefined = undefined
 	) => {
 		if (observations == null) {
 			observations = [];
@@ -551,8 +518,8 @@ const analyze = (rungs: Rung[]): Observation[] | null => {
 
 	const _info = (
 		message: string,
-		instruction: Instruction | undefined = undefined,
-		parameter: number | undefined = undefined,
+		instruction: logic.Instruction | undefined = undefined,
+		parameter: number | undefined = undefined
 	) => {
 		if (observations == null) {
 			observations = [];
@@ -569,7 +536,7 @@ const analyze = (rungs: Rung[]): Observation[] | null => {
 
 	const _isAtEnd = () => rungIndex >= rungs.length;
 
-	const _analyze = (branch: Branch) => {
+	const _analyze = (branch: logic.Branch) => {
 		switch (branch.typ) {
 			case "Instruction": {
 				const instruction = DEFAULT_INSTRUCTIONS.get(branch.name);
@@ -582,7 +549,7 @@ const analyze = (rungs: Rung[]): Observation[] | null => {
 				if (instruction.parameters.length != branch.parameters.length) {
 					_error(
 						`Parameter length mismatch. Expected ${instruction.parameters.length} parameters got ${branch.parameters.length}.`,
-						branch,
+						branch
 					);
 					return;
 				}
@@ -599,7 +566,7 @@ const analyze = (rungs: Rung[]): Observation[] | null => {
 					const result = instruction.parameters[i].accept(
 						branch.parameters[i],
 						i,
-						instruction.parameters[i].name,
+						instruction.parameters[i].name
 					);
 
 					if (result !== undefined) {

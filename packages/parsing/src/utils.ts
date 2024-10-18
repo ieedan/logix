@@ -1,3 +1,6 @@
+// DO NOT EXPORT
+// internal utilities
+
 const isNumber = (num: unknown): boolean => {
 	if (typeof num === "number") {
 		return num - num === 0;

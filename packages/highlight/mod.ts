@@ -1,7 +1,7 @@
-import { EXPRESSION_KEYWORDS, type Token } from "../scanner/tokens.ts";
+import type { tokens } from "@logix/parsing";
 import color from "chalk";
 
-const terminal = (tokens: Token[]): string => {
+const terminal = (tokens: tokens.Token[]): string => {
 	let result = "";
 
 	for (const token of tokens) {
@@ -29,7 +29,7 @@ const terminal = (tokens: Token[]): string => {
 				break;
 			default:
 				// @ts-ignore we must do this check
-				if (EXPRESSION_KEYWORDS.includes(token.typ)) {
+				if (tokens.EXPRESSION_KEYWORDS.includes(token.typ)) {
 					result += color.blueBright(token.lexeme);
 				} else {
 					result += color.gray(token.lexeme);
