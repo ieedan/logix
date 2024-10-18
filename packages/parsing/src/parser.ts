@@ -1,4 +1,4 @@
-import { Err, Ok, type Result } from "@utils";
+import { Err, Ok, type Result } from "../../utils/src/result.ts";
 import { EXPRESSION_KEYWORDS, type Token } from "./tokens.ts";
 import type { And, Branch, Rung } from "./logic.ts";
 import type { Expression } from "./expressions.ts";

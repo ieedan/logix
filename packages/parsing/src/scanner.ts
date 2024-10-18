@@ -5,7 +5,7 @@ import {
 	isNumber,
 	isValidForTagBody,
 } from "./utils.ts";
-import { Err, Ok, type Result } from "@utils";
+import { Err, Ok, type Result } from "../../utils/src/result.ts";
 
 type Error = {
 	error: string;
