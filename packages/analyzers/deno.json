@@ -1,5 +1,6 @@
 {
 	"name": "@logix/analyzers",
+	"version": "0.1.0",
 	"tasks": {},
 	"exports": "./mod.ts",
 	"imports": {
