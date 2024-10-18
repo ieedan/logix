@@ -1,5 +1,5 @@
 {
-	"imports": {
-		"@logix/utils": "./packages/utils"
-	}
+    "imports": {
+        "@utils": "./packages/utils/src/index.ts"
+    }
 }

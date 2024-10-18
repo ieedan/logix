@@ -1,7 +1,7 @@
 import { parser as p, scanner as s } from "@logix/parsing";
 import { instructions as logixAnalyzer } from "@logix/analyzers";
 import * as highlight from "@logix/highlight";
-import { stopwatch } from "@logix/utils";
+import { stopwatch } from "@utils";
 
 if (import.meta.main) {
 	const w = stopwatch();
