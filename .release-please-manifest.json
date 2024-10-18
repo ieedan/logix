@@ -1,3 +1,6 @@
 {
-	"packages/cli": "0.3.0"
+	"packages/cli": "0.0.1",
+	"packages/analyzers": "0.0.1",
+	"packages/highlight": "0.0.1",
+	"packages/parsing": "0.0.1"
 }
