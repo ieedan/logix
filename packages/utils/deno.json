@@ -2,5 +2,10 @@
 	"name": "@logix/utils",
 	"version": "0.0.1",
 	"tasks": {},
-	"exports": "./src/index.ts"
+	"exports": {
+		".": "./index.ts",
+		"./result": "./result.ts",
+		"./stopwatch": "./stopwatch.ts",
+		"./array-to-map": "./array-to-map.ts"
+	}
 }
