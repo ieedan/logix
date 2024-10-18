@@ -1,4 +1,4 @@
-import { Err, Ok, type Result } from "../../utils/src/result.ts";
+import { Err, Ok, type Result } from "@utils";
 import { EXPRESSION_KEYWORDS, type Token } from "./tokens.ts";
 import type { And, Branch, Rung } from "./logic.ts";
 import type { Expression } from "./expressions.ts";
@@ -36,10 +36,7 @@ const newParser = (): Parser => {
 			return prev;
 		};
 
-		const _consume = (
-			match: Token["typ"],
-			message: string,
-		): Result<Token, Error> => {
+		const _consume = (match: Token["typ"], message: string): Result<Token, Error> => {
 			if (_peek().typ === match) {
 				return Ok(_advance());
 			}
@@ -49,8 +46,7 @@ const newParser = (): Parser => {
 
 		const _peek = () => tokens[i];
 
-		const _match = (...mat: Token["typ"][]): boolean =>
-			mat.includes(_peek().typ);
+		const _match = (...mat: Token["typ"][]): boolean => mat.includes(_peek().typ);
 
 		const _and = (): Result<Branch, Error> => {
 			const instructionRes = _instruction();
@@ -86,10 +82,7 @@ const newParser = (): Parser => {
 
 				while (!_isAtEnd() && !_match("]")) {
 					if (branches.length > 0) {
-						const consumeRes = _consume(
-							",",
-							"Expected ',' before next condition.",
-						);
+						const consumeRes = _consume(",", "Expected ',' before next condition.");
 
 						if (consumeRes.isErr()) {
 							return Err(consumeRes.unwrapErr());
@@ -172,10 +165,7 @@ const newParser = (): Parser => {
 
 				const parameters: Expression[] = [];
 
-				const consumeRes = _consume(
-					"(",
-					"Expected '(' before expression parameters.",
-				);
+				const consumeRes = _consume("(", "Expected '(' before expression parameters.");
 
 				if (consumeRes.isErr()) {
 					return Err(consumeRes.unwrapErr());
@@ -183,10 +173,7 @@ const newParser = (): Parser => {
 
 				while (!_isAtEnd() && !_match(")")) {
 					if (parameters.length > 0) {
-						const consumeRes = _consume(
-							",",
-							"Expected ',' after parameter.",
-						);
+						const consumeRes = _consume(",", "Expected ',' after parameter.");
 
 						if (consumeRes.isErr()) {
 							return Err(consumeRes.unwrapErr());
@@ -458,10 +445,7 @@ const newParser = (): Parser => {
 
 				while (!_isAtEnd() && !_match(")")) {
 					if (params.length > 0) {
-						const consumeRes = _consume(
-							",",
-							"Expected ',' after parameter.",
-						);
+						const consumeRes = _consume(",", "Expected ',' after parameter.");
 
 						if (consumeRes.isErr()) {
 							return Err(consumeRes.unwrapErr());
@@ -590,7 +574,7 @@ const newParser = (): Parser => {
 					while (!_isAtEnd() && _match(")", "]", ";")) {
 						_advance();
 					}
-				},
+				}
 			);
 		}
 

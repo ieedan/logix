@@ -1,3 +1,5 @@
 {
-	"imports": {}
+	"imports": {
+		"@utils": "./packages/utils/src/index.ts"
+	}
 }
