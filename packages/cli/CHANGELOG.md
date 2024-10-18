@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/ieedan/logix/compare/v0.2.0...v0.3.0) (2024-10-18)
+
+
+### Features
+
+* **cli:** now we highlight too ([55071fc](https://github.com/ieedan/logix/commit/55071fccbeb260cf9ec9e86158e3c16e46e66462))
+
 ## [0.2.0](https://github.com/ieedan/logix/compare/v0.1.0...v0.2.0) (2024-10-18)
 
 ### Features
