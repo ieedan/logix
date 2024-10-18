@@ -54,5 +54,5 @@ Out:
 
 ## Features
 
--   Expression Parsing
--   Simple AST
+- Expression Parsing
+- Simple AST
