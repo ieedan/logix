@@ -1,6 +1,6 @@
 import { parser as p, scanner as s } from "@logix/parsing";
 import { instructions as logixAnalyzer } from "@logix/analyzers";
-// import * as highlight from "@logix/highlight";
+import * as highlight from "@logix/highlight";
 import { stopwatch } from "@logix/utils";
 
 if (import.meta.main) {
@@ -41,9 +41,9 @@ if (import.meta.main) {
 
 	// display after time
 
-	// console.log("");
-	// console.log(highlight.terminal(tokens));
-	// console.log("");
+	console.log("");
+	console.log(highlight.terminal(tokens));
+	console.log("");
 
 	// console.log("");
 	// console.log(JSON.stringify(tokens, null, 2));
