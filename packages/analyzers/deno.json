@@ -2,7 +2,10 @@
 	"name": "@logix/analyzers",
 	"version": "0.0.1",
 	"tasks": {},
-	"exports": "./mod.ts",
+	"exports": {
+		".": "./mod.ts",
+		"./instructions": "./instructions.ts"
+	},
 	"imports": {
 		"@std/assert": "jsr:@std/assert@1",
 		"chalk": "npm:chalk@^5.3.0"
