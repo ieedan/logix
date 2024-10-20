@@ -1,6 +1,7 @@
 # @logix/highlight
 
 ![jsr badge](https://jsr.io/badges/@logix/highlight)
+![jsr badge](https://jsr.io/badges/@logix/highlight/score)
 
 Enables syntax highlighting for tokenized output from the scanner.
 
