@@ -1,5 +1,15 @@
 {
 	"packages": {
+		"packages/_INTERNAL/utils": {
+			"release-type": "simple",
+			"extra-files": [
+				{
+					"type": "json",
+					"path": "deno.json",
+					"jsonpath": "$.version"
+				}
+			]
+		},
 		"packages/cli": {
 			"release-type": "simple",
 			"extra-files": [

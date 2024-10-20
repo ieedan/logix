@@ -1,0 +1,11 @@
+{
+	"name": "@logix/internal-utils",
+	"version": "0.0.1",
+	"tasks": {},
+	"exports": {
+		".": "./src/index.ts",
+		"./result": "./src/result.ts",
+		"./stopwatch": "./src/stopwatch.ts",
+		"./array-to-map": "./src/array-to-map.ts"
+	}
+}

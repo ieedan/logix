@@ -2,7 +2,7 @@ import * as p from "@logix/parsing/parser";
 import * as s from "@logix/parsing/scanner";
 import * as logixAnalyzer from "@logix/analyzers/instructions";
 import * as highlight from "@logix/highlight";
-import { stopwatch } from "../utils/src/stopwatch.ts";
+import { stopwatch } from "@logix/internal-utils";
 
 if (import.meta.main) {
 	const w = stopwatch();

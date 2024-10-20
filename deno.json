@@ -5,6 +5,11 @@
 		"semiColons": true,
 		"indentWidth": 4
 	},
-	"importMap": "import_map.json",
-	"workspace": ["packages/parsing", "packages/cli", "packages/analyzers", "packages/utils", "packages/highlight"]
+	"workspace": [
+		"packages/parsing",
+		"packages/cli",
+		"packages/analyzers",
+		"packages/highlight",
+		"packages/_INTERNAL/utils"
+	]
 }
