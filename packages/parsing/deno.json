@@ -1,6 +1,6 @@
 {
 	"name": "@logix/parsing",
-	"version": "0.0.3",
+	"version": "0.0.1",
 	"exports": {
 		".": "./mod.ts",
 		"./parser": "./src/parser.ts",
