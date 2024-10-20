@@ -1,7 +1,5 @@
 {
-	"tasks": {
-		"dev": "deno run --watch main.ts"
-	},
+	"tasks": {},
 	"fmt": {
 		"useTabs": true,
 		"semiColons": true,
@@ -11,7 +9,7 @@
 		"packages/parsing",
 		"packages/cli",
 		"packages/analyzers",
-		"packages/utils",
-		"packages/highlight"
+		"packages/highlight",
+		"packages/_INTERNAL/utils"
 	]
 }

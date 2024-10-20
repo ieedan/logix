@@ -1,7 +1,14 @@
 {
 	"name": "@logix/parsing",
-	"version": "0.1.0",
-	"exports": "./mod.ts",
+	"version": "0.0.1",
+	"exports": {
+		".": "./mod.ts",
+		"./parser": "./src/parser.ts",
+		"./scanner": "./src/scanner.ts",
+		"./expressions": "./src/expressions.ts",
+		"./tokens": "./src/tokens.ts",
+		"./logic": "./src/logic.ts"
+	},
 	"imports": {
 		"@std/assert": "jsr:@std/assert@1"
 	}

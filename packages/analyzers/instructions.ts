@@ -3,7 +3,7 @@
    currently it just implements a few basic features to test the usefulness of the produced AST
 */
 
-import { arrayToMap } from "@logix/utils";
+import { arrayToMap } from "@logix/internal-utils";
 import type { expressions, logic } from "@logix/parsing";
 import color from "chalk";
 

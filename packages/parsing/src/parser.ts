@@ -1,4 +1,4 @@
-import { Err, Ok, type Result } from "@logix/utils";
+import { Err, Ok, type Result } from "@logix/internal-utils";
 import { EXPRESSION_KEYWORDS, type Token } from "./tokens.ts";
 import type { And, Branch, Rung } from "./logic.ts";
 import type { Expression } from "./expressions.ts";

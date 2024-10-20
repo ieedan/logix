@@ -1,58 +1,14 @@
-# Allen Bradley Ladder Logic Parser
+# logix
 
-A fully featured parser for Allen Bradley Studio 5000 ladder logic.
+![JSR Scope](https://jsr.io/badges/@logix)
 
-In:
+A monorepo for tooling to enable working with Allen Bradley style ladder logic.
 
-```plaintext
-XIC(foo)OTE(bar);
-```
+## Packages
 
-Out:
-
-```json
-[
-	{
-		"logic": {
-			"typ": "And",
-			"conditions": [
-				{
-					"typ": "Instruction",
-					"index": 0,
-					"name": "XIC",
-					"parameters": [
-						{
-							"typ": "Tag",
-							"token": {
-								"typ": "tag",
-								"column": 4,
-								"lexeme": "foo"
-							}
-						}
-					]
-				},
-				{
-					"typ": "Instruction",
-					"index": 1,
-					"name": "OTE",
-					"parameters": [
-						{
-							"typ": "Tag",
-							"token": {
-								"typ": "tag",
-								"column": 12,
-								"lexeme": "bar"
-							}
-						}
-					]
-				}
-			]
-		}
-	}
-]
-```
-
-## Features
-
-- Expression Parsing
-- Simple AST
+| Package                                     | Latest Version                                       | Score                                                      |
+| ------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------- |
+| [cli](./packages/cli/README.md)             | ![jsr badge](https://jsr.io/badges/@logix/cli)       | ![JSR Score](https://jsr.io/badges/@logix/cli/score)       |
+| [analyzers](./packages/analyzers/README.md) | ![jsr badge](https://jsr.io/badges/@logix/analyzers) | ![JSR Score](https://jsr.io/badges/@logix/analyzers/score) |
+| [highlight](./packages/highlight/README.md) | ![jsr badge](https://jsr.io/badges/@logix/highlight) | ![JSR Score](https://jsr.io/badges/@logix/highlight/score) |
+| [parsing](./packages/parsing/README.md)     | ![jsr badge](https://jsr.io/badges/@logix/parsing)   | ![JSR Score](https://jsr.io/badges/@logix/parsing/score)   |
