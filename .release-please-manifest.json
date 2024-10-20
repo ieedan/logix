@@ -1,7 +1,7 @@
 {
-	"packages/_INTERNAL/utils": "0.0.2",
-	"packages/cli": "0.1.0",
-	"packages/analyzers": "0.0.2",
-	"packages/highlight": "0.0.2",
-	"packages/parsing": "0.0.2"
+	"packages/_INTERNAL/utils": "0.0.3",
+	"packages/cli": "0.2.0",
+	"packages/analyzers": "0.0.3",
+	"packages/highlight": "0.0.3",
+	"packages/parsing": "0.0.3"
 }
