@@ -10,26 +10,6 @@
 				}
 			]
 		},
-		"packages/cli": {
-			"release-type": "simple",
-			"extra-files": [
-				{
-					"type": "json",
-					"path": "deno.json",
-					"jsonpath": "$.version"
-				}
-			]
-		},
-		"packages/parsing": {
-			"release-type": "simple",
-			"extra-files": [
-				{
-					"type": "json",
-					"path": "deno.json",
-					"jsonpath": "$.version"
-				}
-			]
-		},
 		"packages/analyzers": {
 			"release-type": "simple",
 			"extra-files": [
@@ -40,7 +20,27 @@
 				}
 			]
 		},
+		"packages/cli": {
+			"release-type": "simple",
+			"extra-files": [
+				{
+					"type": "json",
+					"path": "deno.json",
+					"jsonpath": "$.version"
+				}
+			]
+		},
 		"packages/highlight": {
+			"release-type": "simple",
+			"extra-files": [
+				{
+					"type": "json",
+					"path": "deno.json",
+					"jsonpath": "$.version"
+				}
+			]
+		},
+		"packages/parsing": {
 			"release-type": "simple",
 			"extra-files": [
 				{
