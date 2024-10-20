@@ -1,6 +1,7 @@
 # @logix/parsing
 
 ![jsr badge](https://jsr.io/badges/@logix/parsing)
+![jsr badge](https://jsr.io/badges/@logix/parsing/score)
 
 Tooling for scanning and parsing ladder logic into an AST.
 

@@ -1,6 +1,7 @@
 # @logix/analyzers
 
 ![jsr badge](https://jsr.io/badges/@logix/analyzers)
+![jsr badge](https://jsr.io/badges/@logix/analyzers/score)
 
 A collection of post-parse analyzers that can validate ladder.
 
