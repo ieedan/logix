@@ -5,7 +5,7 @@
 Enables syntax highlighting for tokenized output from the scanner.
 
 ```ts
-import { terminal } from "@logix/highlight"
+import { terminal } from "@logix/highlight";
 
 console.log(terminal(tokens));
 ```
