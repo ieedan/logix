@@ -23,11 +23,12 @@ jobs:
             - name: Output release info
               run: |
                   echo "releases_created:" ${{ steps.release.outputs.releases_created }}
-                  echo "@logix/analyzers release created:" ${{ steps.release.outputs['packages/analyzers--release_created'] }}
-                  echo "@logix/cli release created:" ${{ steps.release.outputs['packages/cli--release_created'] }}
-                  echo "@logix/highlight release created:" ${{ steps.release.outputs['packages/highlight--release_created'] }}
-                  echo "@logix/parsing release created:" ${{ steps.release.outputs['packages/parsing--release_created'] }}
-                  echo "@logix/internal-utils release created:" ${{ steps.release.outputs['packages/internal-utils--release_created'] }}
+                  echo "released paths:" ${{ steps.release.outputs.paths_released }}
+                  echo "@logix/analyzers release created:" ${{ steps.release.outputs.paths_released['packages/analyzers'] }}
+                  echo "@logix/cli release created:" ${{ steps.release.outputs.paths_released['packages/cli'] }}
+                  echo "@logix/highlight release created:" ${{ steps.release.outputs.paths_released['packages/highlight'] }}
+                  echo "@logix/parsing release created:" ${{ steps.release.outputs.paths_released['packages/parsing'] }}
+                  echo "@logix/internal-utils release created:" ${{ steps.release.outputs.paths_released['packages/internal-utils'] }}
 
             # Check to see if we need to do any releases and if so check out the repo
             - uses: actions/checkout@v4
@@ -37,28 +38,28 @@ jobs:
               run: |
                   npx jsr publish
               working-directory: packages/_INTERNAL/utils
-              if: ${{ steps.release.outputs['packages/internal-utils--release_created'] }}
+              if: ${{ steps.release.outputs.paths_released['packages/_INTERNAL/utils'] }}
 
             - name: Publish @logix/analyzers package to JSR
               run: |
                   npx jsr publish
               working-directory: packages/analyzers
-              if: ${{ steps.release.outputs['packages/analyzers--release_created'] }}
+              if: ${{ steps.release.outputs.paths_released['packages/analyzers'] }}
 
             - name: Publish @logix/cli package to JSR
               run: |
                   npx jsr publish
               working-directory: packages/cli
-              if: ${{ steps.release.outputs['packages/cli--release_created'] }}
+              if: ${{ steps.release.outputs.paths_released['packages/cli'] }}
 
             - name: Publish @logix/highlight package to JSR
               run: |
                   npx jsr publish
               working-directory: packages/highlight
-              if: ${{ steps.release.outputs['packages/highlight--release_created'] }}
+              if: ${{ steps.release.outputs.paths_released['packages/highlight'] }}
 
             - name: Publish @logix/parsing package to JSR
               run: |
                   npx jsr publish
               working-directory: packages/parsing
-              if: ${{ steps.release.outputs['packages/parsing--release_created'] }}
+              if: ${{ steps.release.outputs.paths_released['packages/parsing'] }}
