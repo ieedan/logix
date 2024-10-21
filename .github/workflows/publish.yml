@@ -33,4 +33,4 @@ jobs:
             - name: Attempt to publish packages
               run: |
                   npx jsr publish
-              if: ${{ steps.release.outputs.releases_created }}
+              if: ${{ steps.release.outputs.releases_created == 'true' }}
