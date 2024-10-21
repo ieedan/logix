@@ -1,6 +1,6 @@
 {
 	"name": "@logix/internal-utils",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"tasks": {},
 	"exports": {
 		".": "./src/index.ts",
