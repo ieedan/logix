@@ -24,43 +24,13 @@ jobs:
               run: |
                   echo "releases_created:" ${{ steps.release.outputs.releases_created }}
                   echo "released paths:" ${{ steps.release.outputs.paths_released }}
-                  echo "release-please out:" ${{ steps.release.outputs }}
-                  echo "@logix/analyzers release created:" ${{ steps.release.outputs['packages/analyzers--release_created'] }}
-                  echo "@logix/cli release created:" ${{ steps.release.outputs['packages/cli--release_created'] }}
-                  echo "@logix/highlight release created:" ${{ steps.release.outputs['packages/highlight--release_created'] }}
-                  echo "@logix/parsing release created:" ${{ steps.release.outputs['packages/parsing--release_created'] }}
-                  echo "@logix/internal-utils release created:" ${{ steps.release.outputs['packages/_INTERNAL/utils--release_created'] }}
 
             # Check to see if we need to do any releases and if so check out the repo
             - uses: actions/checkout@v4
               if: ${{ steps.release.outputs.releases_created == 'true' }}
 
-            - name: Publish @logix/internal-utils package to JSR
+            # we can do this because deno is smart enough to skip packages if they are already up to date
+            - name: Attempt to publish packages
               run: |
                   npx jsr publish
-              working-directory: packages/_INTERNAL/utils
-              if: ${{ steps.release.outputs['packages/_INTERNAL/utils--release_created'] }}
-
-            - name: Publish @logix/analyzers package to JSR
-              run: |
-                  npx jsr publish
-              working-directory: packages/analyzers
-              if: ${{ steps.release.outputs['packages/analyzers--release_created'] }}
-
-            - name: Publish @logix/cli package to JSR
-              run: |
-                  npx jsr publish
-              working-directory: packages/cli
-              if: ${{ steps.release.outputs['packages/cli--release_created'] }}
-
-            - name: Publish @logix/highlight package to JSR
-              run: |
-                  npx jsr publish
-              working-directory: packages/highlight
-              if: ${{ steps.release.outputs['packages/highlight--release_created'] }}
-
-            - name: Publish @logix/parsing package to JSR
-              run: |
-                  npx jsr publish
-              working-directory: packages/parsing
-              if: ${{ steps.release.outputs['packages/parsing--release_created'] }}
+              if: ${{ steps.release.outputs.releases_created }}

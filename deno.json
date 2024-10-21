@@ -5,11 +5,15 @@
 		"semiColons": true,
 		"indentWidth": 4
 	},
+	"publish": {
+		"exclude": ["sites/*"]
+	},
 	"workspace": [
 		"packages/parsing",
 		"packages/cli",
 		"packages/analyzers",
 		"packages/highlight",
-		"packages/_INTERNAL/utils"
+		"packages/_INTERNAL/utils",
+		"sites/www"
 	]
 }
