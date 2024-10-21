@@ -14,12 +14,12 @@ type Error = {
 };
 
 type Scanner = {
-	scan: (code: string) => Result<Token[], Error[] | null>;
+	scan: (code: string) => Result<Token[], Error[]>;
 };
 
 /** Creates a new scanner instance  */
 const newScanner = (): Scanner => {
-	const scan = (code: string): Result<Token[], Error[] | null> => {
+	const scan = (code: string): Result<Token[], Error[]> => {
 		let i = 0;
 		const tokens: Token[] = [];
 		let errors: Error[] | null = null;
@@ -310,6 +310,8 @@ const newScanner = (): Scanner => {
 									}
 
 									const str = code.slice(s, i);
+
+									_advance();
 
 									tokens.push({
 										typ: "string",

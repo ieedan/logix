@@ -4,6 +4,9 @@
 	"tasks": {},
 	"exports": "./main.ts",
 	"imports": {
-		"@std/assert": "jsr:@std/assert@1"
+		"@std/assert": "jsr:@std/assert@1",
+		"chalk": "npm:chalk@^5.3.0",
+		"commander": "npm:commander@^12.1.0",
+		"valibot": "npm:valibot@^0.42.1"
 	}
 }
