@@ -1,15 +1,15 @@
 /**
-* Contains scanner methods and types
-* 
-* # Example 
-* 
-* ```ts
-* import * as s from "@logix/parsing/scanner";
-* 
-* const scanner = s.new();
-* ```
-* @module
-*/
+ * Contains scanner methods and types
+ *
+ * # Example
+ *
+ * ```ts
+ * import * as s from "@logix/parsing/scanner";
+ *
+ * const scanner = s.new();
+ * ```
+ * @module
+ */
 
 import { EXPRESSION_KEYWORDS, type Token } from "./tokens.ts";
 import {
@@ -27,25 +27,25 @@ type Error = {
 };
 
 /** Enables tokenization of ladder logic.
- * 
+ *
  * # Example
- * 
+ *
  * ```ts
  * import * as s from "@logix/parsing/scanner";
- * 
+ *
  * const scanner = s.new();
- * 
+ *
  * scanner.scan("XIC(Tag)OTE(Tag2);");
  * ```
  */
 type Scanner = {
 	/** Scans the code and returns the tokenized output.
-	 * 
-	 * @param code 
-	 * @returns 
-	 * 
+	 *
+	 * @param code
+	 * @returns
+	 *
 	 * # Example
-	 * 
+	 *
 	 * ```ts
 	 * scanner.scan("XIC(Tag)OTE(Tag2);");
 	 * ```
@@ -54,14 +54,14 @@ type Scanner = {
 };
 
 /** Creates a new scanner instance
- * 
- * @returns 
- * 
- * # Example 
- * 
+ *
+ * @returns
+ *
+ * # Example
+ *
  * ```ts
  * import * as s from "@logix/parsing/scanner";
- * 
+ *
  * const scanner = s.new();
  * ```
  */

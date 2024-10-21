@@ -1,7 +1,7 @@
 /**
-* Contains expression types
-* @module
-*/
+ * Contains expression types
+ * @module
+ */
 
 import type { Token } from "./tokens.ts";
 

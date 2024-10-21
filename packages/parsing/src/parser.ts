@@ -1,16 +1,16 @@
 /**
-* Contains parser methods and types
-* 
-* # Usage
-* 
-* ```ts
-* import * as p from "@logix/parsing/parser";
-* 
-* const parser = p.new();
-* ```
-* 
-* @module
-*/
+ * Contains parser methods and types
+ *
+ * # Usage
+ *
+ * ```ts
+ * import * as p from "@logix/parsing/parser";
+ *
+ * const parser = p.new();
+ * ```
+ *
+ * @module
+ */
 
 import { Err, Ok, type Result } from "@logix/internal-utils";
 import { EXPRESSION_KEYWORDS, type Token } from "./tokens.ts";
@@ -18,25 +18,25 @@ import type { And, Branch, Rung } from "./logic.ts";
 import type { Expression } from "./expressions.ts";
 
 /** Enables parsing tokens from the scanner.
- * 
+ *
  * # Example
- * 
+ *
  * ```ts
  * import * as p from "@logix/parsing/parser";
- * 
+ *
  * const parser = p.new();
- * 
+ *
  * parser.parse(tokens);
  * ```
  */
 type Parser = {
-	/** Parses the tokens into an AST. 
-	 * 
-	 * @param tokens 
-	 * @returns 
-	 * 
+	/** Parses the tokens into an AST.
+	 *
+	 * @param tokens
+	 * @returns
+	 *
 	 * # Example
-	 * 
+	 *
 	 * ```ts
 	 * const ast = parser.parse(tokens);
 	 * ```
@@ -53,14 +53,14 @@ export type Error = {
 const newEmptyRung = (): Rung => ({ logic: { typ: "And", conditions: [] } });
 
 /** Creates a new parser instance
- * 
- * @returns 
- * 
+ *
+ * @returns
+ *
  * # Example
- * 
+ *
  * ```ts
  * import * as p from "@logix/parsing/parser";
- * 
+ *
  * const parser = p.new();
  * ```
  */
