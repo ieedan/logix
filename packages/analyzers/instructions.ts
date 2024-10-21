@@ -74,11 +74,13 @@ export type LogixInstruction = {
 	parameters: Parameter[];
 };
 
+/** Accepts tags */
 export const acceptTag: Parameter["accept"] = (expr, index, name = undefined) =>
 	expr.typ === "Tag"
 		? undefined
 		: `${name ?? `Operand ${index}`} only accepts Tags`;
 
+/** Accepts anything except for string literals */
 export const acceptExpression: Parameter["accept"] = (
 	expr,
 	index,
@@ -87,6 +89,7 @@ export const acceptExpression: Parameter["accept"] = (
 	? undefined
 	: `${name ?? `Operand ${index}`} only accepts Expressions`;
 
+/** Accepts numbers */
 export const acceptNumber: Parameter["accept"] = (
 	expr,
 	index,
@@ -95,6 +98,7 @@ export const acceptNumber: Parameter["accept"] = (
 	? undefined
 	: `${name ?? `Operand ${index}`} only accepts Numbers`;
 
+/** Accepts number literals or tags */
 export const acceptNumberOrTag: Parameter["accept"] = (
 	expr,
 	index,
@@ -103,6 +107,7 @@ export const acceptNumberOrTag: Parameter["accept"] = (
 	? undefined
 	: `${name ?? `Operand ${index}`} only accepts Numbers and Tags`;
 
+/** Accepts string literals or tags */
 export const acceptStringOrTag: Parameter["accept"] = (
 	expr,
 	index,
@@ -111,6 +116,7 @@ export const acceptStringOrTag: Parameter["accept"] = (
 	? undefined
 	: `${name ?? `Operand ${index}`} only accepts Strings and Tags`;
 
+/** Accepts comparable types */
 export const acceptComparable: Parameter["accept"] = (
 	expr,
 	index,
@@ -123,6 +129,7 @@ export const acceptComparable: Parameter["accept"] = (
 		: `${name ?? `Operand ${index}`} accepts Numbers, Strings, Tags`;
 };
 
+/** The default instruction configuration */
 export const DEFAULT_INSTRUCTIONS: Map<string, LogixInstruction> = arrayToMap(
 	[
 		{
