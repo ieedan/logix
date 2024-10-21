@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0](https://github.com/ieedan/logix/compare/v0.0.2...v0.1.0) (2024-10-21)
+
+
+### Features
+
+* **cli,highlight,parser:** Add highlight command ([259cd0c](https://github.com/ieedan/logix/commit/259cd0c291ebcf7aa76e0afb03c9f6fac23b7f7b))
+* **highlight:** Add `html` method ([022332d](https://github.com/ieedan/logix/commit/022332d4db185fef6cf6aa430a7ec39ef6270a37))
+
 ## [0.0.2](https://github.com/ieedan/logix/compare/v0.0.1...v0.0.2) (2024-10-21)
 
 ### Bug Fixes
