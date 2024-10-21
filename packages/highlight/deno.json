@@ -2,10 +2,10 @@
 	"name": "@logix/highlight",
 	"version": "0.0.2",
 	"exports": {
-		".": "./mod.ts"
+		".": "./mod.ts",
+		"./styles/default": "./styles/default.css"  
 	},
 	"imports": {
-		"@std/assert": "jsr:@std/assert@1",
 		"chalk": "npm:chalk@^5.3.0"
 	}
 }

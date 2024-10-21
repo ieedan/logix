@@ -1,0 +1,31 @@
+/* 
+    This is an entirely terrible theme but gives you an example of what it should look like to implement 
+*/
+
+.logix-string {
+    color: green;
+}
+
+.logix-number {
+    color: orange;
+}
+
+.logix-instruction {
+    color: blue;
+}
+
+.logix-tag {
+    color: blueviolet;
+}
+
+.logix-keyword {
+    color: blue;
+}
+
+.logix-braces {
+    color: yellow;
+}
+
+.logix-default {
+    color: #444444;
+}

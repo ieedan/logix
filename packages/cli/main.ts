@@ -46,13 +46,17 @@ if (import.meta.main) {
 	console.log(highlight.terminal(tokens));
 	console.log("");
 
+	console.log("");
+	console.log(highlight.html(tokens));
+	console.log("");
+
 	// console.log("");
 	// console.log(JSON.stringify(tokens, null, 2));
 	// console.log("");
 
-	console.log("");
-	console.log(JSON.stringify(rungs, null, 2));
-	console.log("");
+	// console.log("");
+	// console.log(JSON.stringify(rungs, null, 2));
+	// console.log("");
 
 	if (analyzerErrors) {
 		for (const error of analyzerErrors) {
