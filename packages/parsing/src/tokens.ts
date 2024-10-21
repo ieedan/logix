@@ -1,4 +1,9 @@
-// See CMP instruction help for expression syntax
+/**
+* Contains token types and expression keywords
+* @module
+*/
+
+// See CMP instruction help for expression syntax 
 
 export const EXPRESSION_KEYWORDS = [
 	"AND",

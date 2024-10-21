@@ -1,3 +1,8 @@
+/**
+* Contains logic types
+* @module
+*/
+
 import type { Expression } from "./expressions.ts";
 
 export type Rung = {
