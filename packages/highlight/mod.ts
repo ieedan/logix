@@ -1,4 +1,4 @@
-import type { Token } from "@logix/parsing/tokens"
+import type { Token } from "@logix/parsing/tokens";
 import { EXPRESSION_KEYWORDS } from "@logix/parsing/tokens";
 import color from "chalk";
 

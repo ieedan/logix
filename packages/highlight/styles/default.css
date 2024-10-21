@@ -3,29 +3,29 @@
 */
 
 .logix-string {
-    color: green;
+	color: green;
 }
 
 .logix-number {
-    color: orange;
+	color: orange;
 }
 
 .logix-instruction {
-    color: blue;
+	color: blue;
 }
 
 .logix-tag {
-    color: blueviolet;
+	color: blueviolet;
 }
 
 .logix-keyword {
-    color: blue;
+	color: blue;
 }
 
 .logix-braces {
-    color: yellow;
+	color: yellow;
 }
 
 .logix-default {
-    color: #444444;
+	color: #444444;
 }

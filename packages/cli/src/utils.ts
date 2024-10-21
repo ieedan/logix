@@ -5,11 +5,11 @@ import color from "chalk";
 const ERROR = color.bgRed(" ERROR ");
 
 const prettyPrintScannerError = (error: scanner.Error) => {
-    return `${ERROR} ${error.error} column: ${error.startColumn}`;
+	return `${ERROR} ${error.error} column: ${error.startColumn}`;
 };
 
 const prettyPrintParserError = (error: parser.Error) => {
-    return `${ERROR} ${error.error}`;
+	return `${ERROR} ${error.error}`;
 };
 
 export { prettyPrintParserError, prettyPrintScannerError };
