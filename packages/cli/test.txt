@@ -1,1 +1,1 @@
-XIC(foo)OTE(bar);   
+[XIC(foo),EQU('str','nil')]OTE(bar);

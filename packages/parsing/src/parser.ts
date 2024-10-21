@@ -9,7 +9,7 @@ type Parser = {
 	errors: Error[] | null;
 };
 
-type Error = {
+export type Error = {
 	error: string;
 };
 

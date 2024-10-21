@@ -1,20 +1,21 @@
-import type { tokens } from "@logix/parsing";
+import type { Token } from "@logix/parsing/tokens"
+import { EXPRESSION_KEYWORDS } from "@logix/parsing/tokens";
 import color from "chalk";
 
 /** Renders the tokenized output from the scanner using `chalk` so it can be displayed in the terminal.
  *
  * @param tokens
  * @returns
- * 
+ *
  * # Example
- * 
+ *
  * ```ts
  * import { terminal } from "@logix/highlight";
- * 
+ *
  * terminal(tokens);
  * ```
  */
-const terminal = (tokens: tokens.Token[]): string => {
+const terminal = (tokens: Token[]): string => {
 	let result = "";
 
 	for (const token of tokens) {
@@ -42,7 +43,7 @@ const terminal = (tokens: tokens.Token[]): string => {
 				break;
 			default:
 				// @ts-ignore we must do this check
-				if (tokens.EXPRESSION_KEYWORDS.includes(token.typ)) {
+				if (EXPRESSION_KEYWORDS.includes(token.typ)) {
 					result += color.blueBright(token.lexeme);
 				} else {
 					result += color.gray(token.lexeme);
@@ -66,20 +67,20 @@ const LOGIX_CLASSES = {
 	"default": "logix-default",
 };
 
-/** Transforms the tokenized output into html with class names for the different tokens. 
- * 
- * @param tokens 
- * @returns 
- * 
+/** Transforms the tokenized output into html with class names for the different tokens.
+ *
+ * @param tokens
+ * @returns
+ *
  * # Example
- * 
+ *
  * ```ts
  * import { html } from "@logix/highlight";
- * 
+ *
  * html(tokens);
  * ```
  */
-const html = (tokens: tokens.Token[]): string => {
+const html = (tokens: Token[]): string => {
 	let result = "";
 
 	for (const token of tokens) {
@@ -111,12 +112,12 @@ const html = (tokens: tokens.Token[]): string => {
 				break;
 			default:
 				// @ts-ignore we must do this check
-				if (tokens.EXPRESSION_KEYWORDS.includes(token.typ)) {
+				if (EXPRESSION_KEYWORDS.includes(token.typ)) {
 					result +=
-					`<span class="${LOGIX_CLASSES.keyword}">${token.lexeme}</span>`;
+						`<span class="${LOGIX_CLASSES.keyword}">${token.lexeme}</span>`;
 				} else {
 					result +=
-					`<span class="${LOGIX_CLASSES.default}">${token.lexeme}</span>`;
+						`<span class="${LOGIX_CLASSES.default}">${token.lexeme}</span>`;
 				}
 
 				break;
@@ -126,4 +127,4 @@ const html = (tokens: tokens.Token[]): string => {
 	return result;
 };
 
-export { terminal, html, LOGIX_CLASSES };
+export { html, LOGIX_CLASSES, terminal };
