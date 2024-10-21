@@ -1,3 +1,8 @@
+/**
+ * Contains expression types
+ * @module
+ */
+
 import type { Token } from "./tokens.ts";
 
 /** Expression types. You can determine which type by checking the `typ` prop on each expression. */

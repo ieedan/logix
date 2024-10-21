@@ -1,3 +1,16 @@
+/**
+ * Contains scanner methods and types
+ *
+ * # Example
+ *
+ * ```ts
+ * import * as s from "@logix/parsing/scanner";
+ *
+ * const scanner = s.new();
+ * ```
+ * @module
+ */
+
 import { EXPRESSION_KEYWORDS, type Token } from "./tokens.ts";
 import {
 	isAlpha,
@@ -13,11 +26,45 @@ type Error = {
 	endColumn: number;
 };
 
+/** Enables tokenization of ladder logic.
+ *
+ * # Example
+ *
+ * ```ts
+ * import * as s from "@logix/parsing/scanner";
+ *
+ * const scanner = s.new();
+ *
+ * scanner.scan("XIC(Tag)OTE(Tag2);");
+ * ```
+ */
 type Scanner = {
+	/** Scans the code and returns the tokenized output.
+	 *
+	 * @param code
+	 * @returns
+	 *
+	 * # Example
+	 *
+	 * ```ts
+	 * scanner.scan("XIC(Tag)OTE(Tag2);");
+	 * ```
+	 */
 	scan: (code: string) => Result<Token[], Error[]>;
 };
 
-/** Creates a new scanner instance  */
+/** Creates a new scanner instance
+ *
+ * @returns
+ *
+ * # Example
+ *
+ * ```ts
+ * import * as s from "@logix/parsing/scanner";
+ *
+ * const scanner = s.new();
+ * ```
+ */
 const newScanner = (): Scanner => {
 	const scan = (code: string): Result<Token[], Error[]> => {
 		let i = 0;

@@ -1,12 +1,16 @@
-/*
-   This is just an example for now and not mean to be a fully featured analyzer
-   currently it just implements a few basic features to test the usefulness of the produced AST
-*/
+/**
+ * This is just an example for now and not mean to be a fully featured analyzer
+ * currently it just implements a few basic features to test the usefulness of the produced AST
+ * @module
+ */
 
 import { arrayToMap } from "@logix/internal-utils";
 import type { expressions, logic } from "@logix/parsing";
 import color from "chalk";
 
+/** Either `error`, `warn` or `info`.
+ *  Gives you all the info you need to print a pretty error to the user.
+ */
 export type Observation = {
 	level: "error" | "warn" | "info";
 	message: string;
@@ -15,6 +19,11 @@ export type Observation = {
 	parameter?: number;
 };
 
+/** Formats the observation to be displayed to the user. Uses `chalk` for coloring.
+ *
+ * @param observation
+ * @returns
+ */
 export const formatObservation = (observation: Observation): string => {
 	let fmt = `Rung ${observation.rung}`;
 
@@ -65,11 +74,13 @@ export type LogixInstruction = {
 	parameters: Parameter[];
 };
 
+/** Accepts tags */
 export const acceptTag: Parameter["accept"] = (expr, index, name = undefined) =>
 	expr.typ === "Tag"
 		? undefined
 		: `${name ?? `Operand ${index}`} only accepts Tags`;
 
+/** Accepts anything except for string literals */
 export const acceptExpression: Parameter["accept"] = (
 	expr,
 	index,
@@ -78,6 +89,7 @@ export const acceptExpression: Parameter["accept"] = (
 	? undefined
 	: `${name ?? `Operand ${index}`} only accepts Expressions`;
 
+/** Accepts numbers */
 export const acceptNumber: Parameter["accept"] = (
 	expr,
 	index,
@@ -86,6 +98,7 @@ export const acceptNumber: Parameter["accept"] = (
 	? undefined
 	: `${name ?? `Operand ${index}`} only accepts Numbers`;
 
+/** Accepts number literals or tags */
 export const acceptNumberOrTag: Parameter["accept"] = (
 	expr,
 	index,
@@ -94,6 +107,7 @@ export const acceptNumberOrTag: Parameter["accept"] = (
 	? undefined
 	: `${name ?? `Operand ${index}`} only accepts Numbers and Tags`;
 
+/** Accepts string literals or tags */
 export const acceptStringOrTag: Parameter["accept"] = (
 	expr,
 	index,
@@ -102,6 +116,7 @@ export const acceptStringOrTag: Parameter["accept"] = (
 	? undefined
 	: `${name ?? `Operand ${index}`} only accepts Strings and Tags`;
 
+/** Accepts comparable types */
 export const acceptComparable: Parameter["accept"] = (
 	expr,
 	index,
@@ -114,6 +129,7 @@ export const acceptComparable: Parameter["accept"] = (
 		: `${name ?? `Operand ${index}`} accepts Numbers, Strings, Tags`;
 };
 
+/** The default instruction configuration */
 export const DEFAULT_INSTRUCTIONS: Map<string, LogixInstruction> = arrayToMap(
 	[
 		{
@@ -508,6 +524,12 @@ export const DEFAULT_INSTRUCTIONS: Map<string, LogixInstruction> = arrayToMap(
 	(instruction) => [instruction.name, instruction],
 );
 
+/** Analyzes the ast checking for correct amount of instruction parameters
+ * as well as warning for empty branches and other things.
+ *
+ * @param rungs
+ * @returns
+ */
 const analyze = (rungs: logic.Rung[]): Observation[] | null => {
 	let observations: Observation[] | null = null;
 	let rungIndex = 0;
